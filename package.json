@@ -1,0 +1,52 @@
+{
+  "name": "rivet-bedrock-plugin",
+  "version": "0.0.1",
+  "description": "AWS Bedrock integration plugin for Rivet",
+  "author": "Mahmoud ElWatidy",
+  "type": "module",
+  "main": "dist/bundle.js",
+  "license": "MIT",
+  "keywords": [
+    "rivet",
+    "rivet-plugin",
+    "aws",
+    "bedrock",
+    "ai",
+    "llm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mwatidy/rivet-bedrock-plugin"
+  },
+  "files": [
+    "dist",
+    "node_modules/@aws-sdk"
+  ],
+  "scripts": {
+    "build": "tsc -b && tsx bundle.ts",
+    "dev": "run-p watch:tsc watch:esbuild:sync",
+    "watch:tsc": "tsc -b -w --preserveWatchOutput",
+    "watch:esbuild": "tsx bundle.ts --watch",
+    "watch:esbuild:sync": "tsx bundle.ts --watch --sync",
+    "prepublishOnly": "yarn build",
+    "release": "yarn npm publish --access public"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.758.0",
+    "@ironclad/rivet-core": "^1.4.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.2",
+    "npm-run-all": "^4.1.5",
+    "recursive-copy": "^2.0.14",
+    "ts-pattern": "^5.6.2",
+    "tsx": "^3.12.10",
+    "typescript": "^5.2.2"
+  },
+  "volta": {
+    "node": "20.6.1"
+  },
+  "rivet": {
+    "skipInstall": true
+  }
+}
