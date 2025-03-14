@@ -56,17 +56,7 @@ const syncPlugin: esbuild.Plugin = {
         join(thisPluginDirectory, "package", "package.json")
       );
 
-      // Copy node_modules with AWS SDK
-      try {
-        await copy(
-          join(__dirname, "node_modules", "@aws-sdk"),
-          join(thisPluginDirectory, "package", "node_modules", "@aws-sdk"),
-          { filter: ["**/*"] }
-        );
-        console.log("AWS SDK dependencies copied to plugin package");
-      } catch (error) {
-        console.error("Error copying AWS SDK dependencies:", error);
-      }
+      // We're now bundling the AWS SDK, so no need to copy node_modules
 
       // Copy .git to mark as locally installed plugin
       await copy(
@@ -84,12 +74,12 @@ const syncPlugin: esbuild.Plugin = {
 const options = {
   entryPoints: ["src/index.ts"],
   bundle: true,
-  platform: "neutral",
+  platform: "browser", // Use browser platform for better module resolution
   target: "es2020",
   outfile: "dist/bundle.js",
   format: "esm",
   logLevel: "info",
-  external: ["@aws-sdk/*"], // Mark AWS SDK as external to avoid bundling issues
+  external: ["@ironclad/rivet-core"], // Only mark rivet-core as external
   plugins: [] as esbuild.Plugin[],
 } satisfies esbuild.BuildOptions;
 

@@ -1,6 +1,6 @@
 {
   "name": "rivet-bedrock-plugin",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "AWS Bedrock integration plugin for Rivet",
   "author": "Mahmoud ElWatidy",
   "type": "module",
@@ -19,8 +19,7 @@
     "url": "https://github.com/mwatidy/rivet-bedrock-plugin"
   },
   "files": [
-    "dist",
-    "node_modules/@aws-sdk"
+    "dist"
   ],
   "scripts": {
     "build": "tsc -b && tsx bundle.ts",

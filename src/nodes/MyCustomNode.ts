@@ -151,7 +151,7 @@ export function myCustomNode(rivet: typeof Rivet) {
     getUIData(): NodeUIData {
       return {
         contextMenuTitle: "AWS Bedrock",
-        group: "My Custom Group",
+        group: "aws-bedrock",  // This should match the context menu group ID from index.ts
         infoBoxBody: "Send prompts to AWS Bedrock AI models and get responses.",
         infoBoxTitle: "AWS Bedrock Node",
       };
